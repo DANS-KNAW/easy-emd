@@ -23,6 +23,7 @@ import java.util.List;
 import java.util.Map;
 
 import nl.knaw.dans.pf.language.emd.types.BasicIdentifier;
+import nl.knaw.dans.pf.language.emd.types.BasicString;
 import nl.knaw.dans.pf.language.emd.types.Relation;
 
 /**
@@ -40,20 +41,20 @@ public class EmdRelation extends AbstractEmdContainer {
      */
     private static final long serialVersionUID = 2575109351833151169L;
 
-    private List<BasicIdentifier> dcRelation;
-    private List<BasicIdentifier> termsConformsTo;
-    private List<BasicIdentifier> termsIsVersionOf;
-    private List<BasicIdentifier> termsHasVersion;
-    private List<BasicIdentifier> termsIsReplacedBy;
-    private List<BasicIdentifier> termsReplaces;
-    private List<BasicIdentifier> termsIsRequiredBy;
-    private List<BasicIdentifier> termsRequires;
-    private List<BasicIdentifier> termsIsPartOf;
-    private List<BasicIdentifier> termsHasPart;
-    private List<BasicIdentifier> termsIsReferencedBy;
-    private List<BasicIdentifier> termsReferences;
-    private List<BasicIdentifier> termsIsFormatOf;
-    private List<BasicIdentifier> termsHasFormat;
+    private List<BasicString> dcRelation;
+    private List<BasicString> termsConformsTo;
+    private List<BasicString> termsIsVersionOf;
+    private List<BasicString> termsHasVersion;
+    private List<BasicString> termsIsReplacedBy;
+    private List<BasicString> termsReplaces;
+    private List<BasicString> termsIsRequiredBy;
+    private List<BasicString> termsRequires;
+    private List<BasicString> termsIsPartOf;
+    private List<BasicString> termsHasPart;
+    private List<BasicString> termsIsReferencedBy;
+    private List<BasicString> termsReferences;
+    private List<BasicString> termsIsFormatOf;
+    private List<BasicString> termsHasFormat;
     private List<Relation> easRelation;
     private List<Relation> easConformsTo;
     private List<Relation> easIsVersionOf;
@@ -151,8 +152,8 @@ public class EmdRelation extends AbstractEmdContainer {
         return map;
     }
 
-    public Map<String, List<BasicIdentifier>> getBasicIdentifierMap() {
-        Map<String, List<BasicIdentifier>> map = new HashMap<String, List<BasicIdentifier>>();
+    public Map<String, List<BasicString>> getDCRelationMap() {
+        Map<String, List<BasicString>> map = new HashMap<String, List<BasicString>>();
         map.put(RELATION, this.getDcRelation());
         map.put(CONFORMS_TO, this.getTermsConformsTo());
         map.put(HAS_FORMAT, this.getTermsHasFormat());
@@ -187,9 +188,9 @@ public class EmdRelation extends AbstractEmdContainer {
      * @see <a href="http://dublincore.org/documents/dcmi-terms/#terms-relation">dcmi-terms/#terms-relation</a>
      * @return a list of resource properties
      */
-    public List<BasicIdentifier> getDcRelation() {
+    public List<BasicString> getDcRelation() {
         if (dcRelation == null) {
-            dcRelation = new ArrayList<BasicIdentifier>();
+            dcRelation = new ArrayList<BasicString>();
         }
         return dcRelation;
     }
@@ -201,7 +202,7 @@ public class EmdRelation extends AbstractEmdContainer {
      * @param list
      *        a list of resource properties
      */
-    public void setDcRelation(final List<BasicIdentifier> list) {
+    public void setDcRelation(final List<BasicString> list) {
         this.dcRelation = list;
     }
 
@@ -211,9 +212,9 @@ public class EmdRelation extends AbstractEmdContainer {
      * @see <a href="http://dublincore.org/documents/dcmi-terms/#terms-conformsTo">dcmi-terms/#terms-conformsTo</a>
      * @return a list of resource properties
      */
-    public List<BasicIdentifier> getTermsConformsTo() {
+    public List<BasicString> getTermsConformsTo() {
         if (termsConformsTo == null) {
-            termsConformsTo = new ArrayList<BasicIdentifier>();
+            termsConformsTo = new ArrayList<BasicString>();
         }
         return termsConformsTo;
     }
@@ -225,7 +226,7 @@ public class EmdRelation extends AbstractEmdContainer {
      * @param list
      *        a list of resource properties
      */
-    public void setTermsConformsTo(final List<BasicIdentifier> list) {
+    public void setTermsConformsTo(final List<BasicString> list) {
         this.termsConformsTo = list;
     }
 
@@ -235,9 +236,9 @@ public class EmdRelation extends AbstractEmdContainer {
      * @see <a href="http://dublincore.org/documents/dcmi-terms/#terms-isVersionOf">dcmi-terms/#terms-isVersionOf</a>
      * @return a list of resource properties
      */
-    public List<BasicIdentifier> getTermsIsVersionOf() {
+    public List<BasicString> getTermsIsVersionOf() {
         if (termsIsVersionOf == null) {
-            termsIsVersionOf = new ArrayList<BasicIdentifier>();
+            termsIsVersionOf = new ArrayList<BasicString>();
         }
         return termsIsVersionOf;
     }
@@ -249,7 +250,7 @@ public class EmdRelation extends AbstractEmdContainer {
      * @param list
      *        a list of resource properties
      */
-    public void setTermsIsVersionOf(final List<BasicIdentifier> list) {
+    public void setTermsIsVersionOf(final List<BasicString> list) {
         this.termsIsVersionOf = list;
     }
 
@@ -259,9 +260,9 @@ public class EmdRelation extends AbstractEmdContainer {
      * @see <a href="http://dublincore.org/documents/dcmi-terms/#terms-hasVersion">dcmi-terms/#terms-hasVersion</a>
      * @return a list of resource properties
      */
-    public List<BasicIdentifier> getTermsHasVersion() {
+    public List<BasicString> getTermsHasVersion() {
         if (termsHasVersion == null) {
-            termsHasVersion = new ArrayList<BasicIdentifier>();
+            termsHasVersion = new ArrayList<BasicString>();
         }
         return termsHasVersion;
     }
@@ -273,7 +274,7 @@ public class EmdRelation extends AbstractEmdContainer {
      * @param list
      *        a list of resource properties
      */
-    public void setTermsHasVersion(final List<BasicIdentifier> list) {
+    public void setTermsHasVersion(final List<BasicString> list) {
         this.termsHasVersion = list;
     }
 
@@ -283,9 +284,9 @@ public class EmdRelation extends AbstractEmdContainer {
      * @see <a href="http://dublincore.org/documents/dcmi-terms/#terms-isReplacedBy">dcmi-terms/#terms-isReplacedBy</a>
      * @return a list of resource properties
      */
-    public List<BasicIdentifier> getTermsIsReplacedBy() {
+    public List<BasicString> getTermsIsReplacedBy() {
         if (termsIsReplacedBy == null) {
-            termsIsReplacedBy = new ArrayList<BasicIdentifier>();
+            termsIsReplacedBy = new ArrayList<BasicString>();
         }
         return termsIsReplacedBy;
     }
@@ -297,7 +298,7 @@ public class EmdRelation extends AbstractEmdContainer {
      * @param list
      *        a list of resource properties
      */
-    public void setTermsIsReplacedBy(final List<BasicIdentifier> list) {
+    public void setTermsIsReplacedBy(final List<BasicString> list) {
         this.termsIsReplacedBy = list;
     }
 
@@ -307,9 +308,9 @@ public class EmdRelation extends AbstractEmdContainer {
      * @see <a href="http://dublincore.org/documents/dcmi-terms/#terms-replaces">dcmi-terms/#terms-replaces</a>
      * @return a list of resource properties
      */
-    public List<BasicIdentifier> getTermsReplaces() {
+    public List<BasicString> getTermsReplaces() {
         if (termsReplaces == null) {
-            termsReplaces = new ArrayList<BasicIdentifier>();
+            termsReplaces = new ArrayList<BasicString>();
         }
         return termsReplaces;
     }
@@ -321,7 +322,7 @@ public class EmdRelation extends AbstractEmdContainer {
      * @param list
      *        a list of resource properties
      */
-    public void setTermsReplaces(final List<BasicIdentifier> list) {
+    public void setTermsReplaces(final List<BasicString> list) {
         this.termsReplaces = list;
     }
 
@@ -331,9 +332,9 @@ public class EmdRelation extends AbstractEmdContainer {
      * @see <a href="http://dublincore.org/documents/dcmi-terms/#terms-isRequiredBy">dcmi-terms/#terms-isRequiredBy</a>
      * @return a list of resource properties
      */
-    public List<BasicIdentifier> getTermsIsRequiredBy() {
+    public List<BasicString> getTermsIsRequiredBy() {
         if (termsIsRequiredBy == null) {
-            termsIsRequiredBy = new ArrayList<BasicIdentifier>();
+            termsIsRequiredBy = new ArrayList<BasicString>();
         }
         return termsIsRequiredBy;
     }
@@ -345,7 +346,7 @@ public class EmdRelation extends AbstractEmdContainer {
      * @param list
      *        a list of resource properties
      */
-    public void setTermsIsRequiredBy(final List<BasicIdentifier> list) {
+    public void setTermsIsRequiredBy(final List<BasicString> list) {
         this.termsIsRequiredBy = list;
     }
 
@@ -355,9 +356,9 @@ public class EmdRelation extends AbstractEmdContainer {
      * @see <a href="http://dublincore.org/documents/dcmi-terms/#terms-requires">dcmi-terms/#terms-requires</a>
      * @return a list of resource properties
      */
-    public List<BasicIdentifier> getTermsRequires() {
+    public List<BasicString> getTermsRequires() {
         if (termsRequires == null) {
-            termsRequires = new ArrayList<BasicIdentifier>();
+            termsRequires = new ArrayList<BasicString>();
         }
         return termsRequires;
     }
@@ -369,7 +370,7 @@ public class EmdRelation extends AbstractEmdContainer {
      * @param list
      *        a list of resource properties
      */
-    public void setTermsRequires(final List<BasicIdentifier> list) {
+    public void setTermsRequires(final List<BasicString> list) {
         this.termsRequires = list;
     }
 
@@ -379,9 +380,9 @@ public class EmdRelation extends AbstractEmdContainer {
      * @see <a href="http://dublincore.org/documents/dcmi-terms/#terms-isPartOf">dcmi-terms/#terms-isPartOf</a>
      * @return a list of resource properties
      */
-    public List<BasicIdentifier> getTermsIsPartOf() {
+    public List<BasicString> getTermsIsPartOf() {
         if (termsIsPartOf == null) {
-            termsIsPartOf = new ArrayList<BasicIdentifier>();
+            termsIsPartOf = new ArrayList<BasicString>();
         }
         return termsIsPartOf;
     }
@@ -393,7 +394,7 @@ public class EmdRelation extends AbstractEmdContainer {
      * @param list
      *        a list of resource properties
      */
-    public void setTermsIsPartOf(final List<BasicIdentifier> list) {
+    public void setTermsIsPartOf(final List<BasicString> list) {
         this.termsIsPartOf = list;
     }
 
@@ -403,9 +404,9 @@ public class EmdRelation extends AbstractEmdContainer {
      * @see <a href="http://dublincore.org/documents/dcmi-terms/#terms-hasPart">dcmi-terms/#terms-hasPart</a>
      * @return a list of resource properties
      */
-    public List<BasicIdentifier> getTermsHasPart() {
+    public List<BasicString> getTermsHasPart() {
         if (termsHasPart == null) {
-            termsHasPart = new ArrayList<BasicIdentifier>();
+            termsHasPart = new ArrayList<BasicString>();
         }
         return termsHasPart;
     }
@@ -417,7 +418,7 @@ public class EmdRelation extends AbstractEmdContainer {
      * @param list
      *        a list of resource properties
      */
-    public void setTermsHasPart(final List<BasicIdentifier> list) {
+    public void setTermsHasPart(final List<BasicString> list) {
         this.termsHasPart = list;
     }
 
@@ -427,9 +428,9 @@ public class EmdRelation extends AbstractEmdContainer {
      * @see <a href="http://dublincore.org/documents/dcmi-terms/#terms-isReferencedBy">dcmi-terms/#terms-isReferencedBy</a>
      * @return a list of resource properties
      */
-    public List<BasicIdentifier> getTermsIsReferencedBy() {
+    public List<BasicString> getTermsIsReferencedBy() {
         if (termsIsReferencedBy == null) {
-            termsIsReferencedBy = new ArrayList<BasicIdentifier>();
+            termsIsReferencedBy = new ArrayList<BasicString>();
         }
         return termsIsReferencedBy;
     }
@@ -441,7 +442,7 @@ public class EmdRelation extends AbstractEmdContainer {
      * @param list
      *        a list of resource properties
      */
-    public void setTermsIsReferencedBy(final List<BasicIdentifier> list) {
+    public void setTermsIsReferencedBy(final List<BasicString> list) {
         this.termsIsReferencedBy = list;
     }
 
@@ -451,9 +452,9 @@ public class EmdRelation extends AbstractEmdContainer {
      * @see <a href="http://dublincore.org/documents/dcmi-terms/#terms-references">dcmi-terms/#terms-references</a>
      * @return a list of resource properties
      */
-    public List<BasicIdentifier> getTermsReferences() {
+    public List<BasicString> getTermsReferences() {
         if (termsReferences == null) {
-            termsReferences = new ArrayList<BasicIdentifier>();
+            termsReferences = new ArrayList<BasicString>();
         }
         return termsReferences;
     }
@@ -465,7 +466,7 @@ public class EmdRelation extends AbstractEmdContainer {
      * @param list
      *        a list of resource properties
      */
-    public void setTermsReferences(final List<BasicIdentifier> list) {
+    public void setTermsReferences(final List<BasicString> list) {
         this.termsReferences = list;
     }
 
@@ -475,9 +476,9 @@ public class EmdRelation extends AbstractEmdContainer {
      * @see <a href="http://dublincore.org/documents/dcmi-terms/#terms-isFormatOf">dcmi-terms/#terms-isFormatOf</a>
      * @return a list of resource properties
      */
-    public List<BasicIdentifier> getTermsIsFormatOf() {
+    public List<BasicString> getTermsIsFormatOf() {
         if (termsIsFormatOf == null) {
-            termsIsFormatOf = new ArrayList<BasicIdentifier>();
+            termsIsFormatOf = new ArrayList<BasicString>();
         }
         return termsIsFormatOf;
     }
@@ -489,7 +490,7 @@ public class EmdRelation extends AbstractEmdContainer {
      * @param list
      *        a list of resource properties
      */
-    public void setTermsIsFormatOf(final List<BasicIdentifier> list) {
+    public void setTermsIsFormatOf(final List<BasicString> list) {
         this.termsIsFormatOf = list;
     }
 
@@ -499,9 +500,9 @@ public class EmdRelation extends AbstractEmdContainer {
      * @see <a href="http://dublincore.org/documents/dcmi-terms/#terms-hasFormat">dcmi-terms/#terms-hasFormat</a>
      * @return a list of resource properties
      */
-    public List<BasicIdentifier> getTermsHasFormat() {
+    public List<BasicString> getTermsHasFormat() {
         if (termsHasFormat == null) {
-            termsHasFormat = new ArrayList<BasicIdentifier>();
+            termsHasFormat = new ArrayList<BasicString>();
         }
         return termsHasFormat;
     }
@@ -513,7 +514,7 @@ public class EmdRelation extends AbstractEmdContainer {
      * @param list
      *        a list of resource properties
      */
-    public void setTermsHasFormat(final List<BasicIdentifier> list) {
+    public void setTermsHasFormat(final List<BasicString> list) {
         this.termsHasFormat = list;
     }
 

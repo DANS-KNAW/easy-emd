@@ -31,72 +31,72 @@
 
 		<collection field="dcRelation" factory="nl.knaw.dans.pf.language.emd.types.ListFactory.basicIdentifierList" usage="optional">
 			<structure ns="http://purl.org/dc/elements/1.1/" name="relation"
-				type="nl.knaw.dans.pf.language.emd.types.BasicIdentifier" usage="optional"/>
+				type="nl.knaw.dans.pf.language.emd.types.BasicString" usage="optional"/>
 		</collection>
 
 		<collection field="termsConformsTo" factory="nl.knaw.dans.pf.language.emd.types.ListFactory.basicIdentifierList" usage="optional">
 			<structure ns="http://purl.org/dc/terms/" name="conformsTo"
-				type="nl.knaw.dans.pf.language.emd.types.BasicIdentifier" usage="optional"/>
+				type="nl.knaw.dans.pf.language.emd.types.BasicString" usage="optional"/>
 		</collection>
 
 		<collection field="termsIsVersionOf" factory="nl.knaw.dans.pf.language.emd.types.ListFactory.basicIdentifierList" usage="optional">
 			<structure ns="http://purl.org/dc/terms/" name="isVersionOf"
-				type="nl.knaw.dans.pf.language.emd.types.BasicIdentifier" usage="optional"/>
+				type="nl.knaw.dans.pf.language.emd.types.BasicString" usage="optional"/>
 		</collection>
 
 		<collection field="termsHasVersion" factory="nl.knaw.dans.pf.language.emd.types.ListFactory.basicIdentifierList" usage="optional">
 			<structure ns="http://purl.org/dc/terms/" name="hasVersion"
-				type="nl.knaw.dans.pf.language.emd.types.BasicIdentifier" usage="optional"/>
+				type="nl.knaw.dans.pf.language.emd.types.BasicString" usage="optional"/>
 		</collection>
 
 		<collection field="termsIsReplacedBy" factory="nl.knaw.dans.pf.language.emd.types.ListFactory.basicIdentifierList" usage="optional">
 			<structure ns="http://purl.org/dc/terms/" name="isReplacedBy"
-				type="nl.knaw.dans.pf.language.emd.types.BasicIdentifier" usage="optional"/>
+				type="nl.knaw.dans.pf.language.emd.types.BasicString" usage="optional"/>
 		</collection>
 
 		<collection field="termsReplaces" factory="nl.knaw.dans.pf.language.emd.types.ListFactory.basicIdentifierList" usage="optional">
 			<structure ns="http://purl.org/dc/terms/" name="replaces"
-				type="nl.knaw.dans.pf.language.emd.types.BasicIdentifier" usage="optional"/>
+				type="nl.knaw.dans.pf.language.emd.types.BasicString" usage="optional"/>
 		</collection>
 
 		<collection field="termsIsRequiredBy" factory="nl.knaw.dans.pf.language.emd.types.ListFactory.basicIdentifierList" usage="optional">
 			<structure ns="http://purl.org/dc/terms/" name="isRequiredBy"
-				type="nl.knaw.dans.pf.language.emd.types.BasicIdentifier" usage="optional"/>
+				type="nl.knaw.dans.pf.language.emd.types.BasicString" usage="optional"/>
 		</collection>
 
 		<collection field="termsRequires" factory="nl.knaw.dans.pf.language.emd.types.ListFactory.basicIdentifierList" usage="optional">
 			<structure ns="http://purl.org/dc/terms/" name="requires"
-				type="nl.knaw.dans.pf.language.emd.types.BasicIdentifier" usage="optional"/>
+				type="nl.knaw.dans.pf.language.emd.types.BasicString" usage="optional"/>
 		</collection>
 
 		<collection field="termsIsPartOf" factory="nl.knaw.dans.pf.language.emd.types.ListFactory.basicIdentifierList" usage="optional">
 			<structure ns="http://purl.org/dc/terms/" name="isPartOf"
-				type="nl.knaw.dans.pf.language.emd.types.BasicIdentifier" usage="optional"/>
+				type="nl.knaw.dans.pf.language.emd.types.BasicString" usage="optional"/>
 		</collection>
 
 		<collection field="termsHasPart" factory="nl.knaw.dans.pf.language.emd.types.ListFactory.basicIdentifierList" usage="optional">
 			<structure ns="http://purl.org/dc/terms/" name="hasPart"
-				type="nl.knaw.dans.pf.language.emd.types.BasicIdentifier" usage="optional"/>
+				type="nl.knaw.dans.pf.language.emd.types.BasicString" usage="optional"/>
 		</collection>
 
 		<collection field="termsIsReferencedBy" factory="nl.knaw.dans.pf.language.emd.types.ListFactory.basicIdentifierList" usage="optional">
 			<structure ns="http://purl.org/dc/terms/" name="isReferencedBy"
-				type="nl.knaw.dans.pf.language.emd.types.BasicIdentifier" usage="optional"/>
+				type="nl.knaw.dans.pf.language.emd.types.BasicString" usage="optional"/>
 		</collection>
 
 		<collection field="termsReferences" factory="nl.knaw.dans.pf.language.emd.types.ListFactory.basicIdentifierList" usage="optional">
 			<structure ns="http://purl.org/dc/terms/" name="references"
-				type="nl.knaw.dans.pf.language.emd.types.BasicIdentifier" usage="optional"/>
+				type="nl.knaw.dans.pf.language.emd.types.BasicString" usage="optional"/>
 		</collection>
 
 		<collection field="termsIsFormatOf" factory="nl.knaw.dans.pf.language.emd.types.ListFactory.basicIdentifierList" usage="optional">
 			<structure ns="http://purl.org/dc/terms/" name="isFormatOf"
-				type="nl.knaw.dans.pf.language.emd.types.BasicIdentifier" usage="optional"/>
+				type="nl.knaw.dans.pf.language.emd.types.BasicString" usage="optional"/>
 		</collection>
 
 		<collection field="termsHasFormat" factory="nl.knaw.dans.pf.language.emd.types.ListFactory.basicIdentifierList" usage="optional">
 			<structure ns="http://purl.org/dc/terms/" name="hasFormat"
-				type="nl.knaw.dans.pf.language.emd.types.BasicIdentifier" usage="optional"/>
+				type="nl.knaw.dans.pf.language.emd.types.BasicString" usage="optional"/>
 		</collection>
 
 		<collection field="easRelation" factory="nl.knaw.dans.pf.language.emd.types.ListFactory.relationList" usage="optional">
