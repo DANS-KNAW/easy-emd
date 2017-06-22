@@ -15,16 +15,15 @@
  */
 package nl.knaw.dans.pf.language.emd;
 
+import nl.knaw.dans.pf.language.emd.types.BasicString;
+import nl.knaw.dans.pf.language.emd.types.Relation;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import nl.knaw.dans.pf.language.emd.types.BasicIdentifier;
-import nl.knaw.dans.pf.language.emd.types.BasicString;
-import nl.knaw.dans.pf.language.emd.types.Relation;
 
 /**
  * Container for resource properties of category relation.
@@ -73,20 +72,19 @@ public class EmdRelation extends AbstractEmdContainer {
     /**
      * Terms contained.
      */
-    static final Term[] TERMS = {new Term(Term.Name.RELATION, Term.Namespace.DC, BasicIdentifier.class),
-            new Term(Term.Name.CONFORMS_TO, Term.Namespace.DCTERMS, BasicIdentifier.class),
-            new Term(Term.Name.IS_VERSION_OF, Term.Namespace.DCTERMS, BasicIdentifier.class),
-            new Term(Term.Name.HAS_VERSION, Term.Namespace.DCTERMS, BasicIdentifier.class),
-            new Term(Term.Name.IS_REPLACED_BY, Term.Namespace.DCTERMS, BasicIdentifier.class),
-            new Term(Term.Name.REPLACES, Term.Namespace.DCTERMS, BasicIdentifier.class),
-            new Term(Term.Name.IS_REQUIRED_BY, Term.Namespace.DCTERMS, BasicIdentifier.class),
-            new Term(Term.Name.REQUIRES, Term.Namespace.DCTERMS, BasicIdentifier.class),
-            new Term(Term.Name.IS_PART_OF, Term.Namespace.DCTERMS, BasicIdentifier.class),
-            new Term(Term.Name.HAS_PART, Term.Namespace.DCTERMS, BasicIdentifier.class),
-            new Term(Term.Name.IS_REFERENCED_BY, Term.Namespace.DCTERMS, BasicIdentifier.class),
-            new Term(Term.Name.REFERENCES, Term.Namespace.DCTERMS, BasicIdentifier.class),
-            new Term(Term.Name.IS_FORMAT_OF, Term.Namespace.DCTERMS, BasicIdentifier.class),
-            new Term(Term.Name.HAS_FORMAT, Term.Namespace.DCTERMS, BasicIdentifier.class),
+    static final Term[] TERMS = {new Term(Term.Name.RELATION, Term.Namespace.DC, BasicString.class),
+            new Term(Term.Name.CONFORMS_TO, Term.Namespace.DCTERMS, BasicString.class),
+            new Term(Term.Name.IS_VERSION_OF, Term.Namespace.DCTERMS, BasicString.class),
+            new Term(Term.Name.HAS_VERSION, Term.Namespace.DCTERMS, BasicString.class),
+            new Term(Term.Name.IS_REPLACED_BY, Term.Namespace.DCTERMS, BasicString.class),
+            new Term(Term.Name.REPLACES, Term.Namespace.DCTERMS, BasicString.class),
+            new Term(Term.Name.IS_REQUIRED_BY, Term.Namespace.DCTERMS, BasicString.class),
+            new Term(Term.Name.REQUIRES, Term.Namespace.DCTERMS, BasicString.class), new Term(Term.Name.IS_PART_OF, Term.Namespace.DCTERMS, BasicString.class),
+            new Term(Term.Name.HAS_PART, Term.Namespace.DCTERMS, BasicString.class),
+            new Term(Term.Name.IS_REFERENCED_BY, Term.Namespace.DCTERMS, BasicString.class),
+            new Term(Term.Name.REFERENCES, Term.Namespace.DCTERMS, BasicString.class),
+            new Term(Term.Name.IS_FORMAT_OF, Term.Namespace.DCTERMS, BasicString.class),
+            new Term(Term.Name.HAS_FORMAT, Term.Namespace.DCTERMS, BasicString.class),
 
             new Term(Term.Name.RELATION, Term.Namespace.EAS, Relation.class), new Term(Term.Name.CONFORMS_TO, Term.Namespace.EAS, Relation.class),
             new Term(Term.Name.IS_VERSION_OF, Term.Namespace.EAS, Relation.class), new Term(Term.Name.HAS_VERSION, Term.Namespace.EAS, Relation.class),
