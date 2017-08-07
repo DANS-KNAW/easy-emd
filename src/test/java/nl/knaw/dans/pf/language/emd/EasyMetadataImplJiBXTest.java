@@ -29,7 +29,9 @@ import java.util.List;
 
 import nl.knaw.dans.pf.language.emd.binding.EmdMarshaller;
 import nl.knaw.dans.pf.language.emd.binding.EmdUnmarshaller;
+import nl.knaw.dans.pf.language.emd.types.ApplicationSpecific;
 import nl.knaw.dans.pf.language.emd.types.BasicIdentifier;
+import nl.knaw.dans.pf.language.emd.types.EmdArchive;
 import nl.knaw.dans.pf.language.emd.types.EmdConstants;
 import nl.knaw.dans.pf.language.emd.validation.EMDValidator;
 import nl.knaw.dans.pf.language.xml.validation.XMLErrorHandler;
@@ -71,6 +73,23 @@ public class EasyMetadataImplJiBXTest {
 
         XMLErrorHandler handler = EMDValidator.instance().validate(xmlString, null);
         assertTrue(handler.passed());
+    }
+
+    @Test
+    public void testApplicationSpecific() throws Exception {
+        EasyMetadata emd = new EasyMetadataImpl();
+        EmdOther emdOther = emd.getEmdOther();
+
+        ApplicationSpecific easApplicationSpecific = emdOther.getEasApplicationSpecific();
+        easApplicationSpecific.setPakbonStatus(ApplicationSpecific.PakbonStatus.IMPORTED);
+
+        EmdArchive archive = new EmdArchive();
+        archive.setLocation(EmdArchive.Location.DATAVAULT);
+        easApplicationSpecific.setArchive(archive);
+
+        byte[] bytes = new EmdMarshaller(emd).getXmlByteArray();
+        EasyMetadata emd2 = new EmdUnmarshaller<EasyMetadata>(EasyMetadataImpl.class).unmarshal(bytes);
+        assertEquals(EmdArchive.Location.DATAVAULT, emd2.getEmdOther().getEasApplicationSpecific().getArchive().getLocation());
     }
 
     @Test

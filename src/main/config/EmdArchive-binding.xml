@@ -18,19 +18,13 @@
 -->
 <binding>
 
-	<mapping class="nl.knaw.dans.pf.language.emd.types.ApplicationSpecific" ns="http://easy.dans.knaw.nl/easy/easymetadata/eas/"
-		abstract="true">
+	<mapping name="archive" class="nl.knaw.dans.pf.language.emd.types.EmdArchive" ns="http://easy.dans.knaw.nl/easy/easymetadata/eas/"
+			 abstract="true">
 
 		<namespace uri="http://www.w3.org/XML/1998/namespace" prefix="xml" />
 		<namespace uri="http://easy.dans.knaw.nl/easy/easymetadata/eas/" prefix="eas" />
 
-		<value ns="http://easy.dans.knaw.nl/easy/easymetadata/eas/" name="metadataformat" field="metadataFormat" usage="optional" />
-		<value ns="http://easy.dans.knaw.nl/easy/easymetadata/eas/" name="pakbon-status" field="pakbonStatus" usage="optional" />
-
-
-		<structure ns="http://easy.dans.knaw.nl/easy/easymetadata/eas/" type="nl.knaw.dans.pf.language.emd.types.EmdArchive" name="archive" field="archive" usage="optional">
-			<value style="attribute" ns="http://easy.dans.knaw.nl/easy/easymetadata/eas/" name="location" field="location" usage="optional"/>
-		</structure>
+		<value style="attribute" ns="http://easy.dans.knaw.nl/easy/easymetadata/eas/" name="location" field="location" usage="optional"/>
 
 	</mapping>
 

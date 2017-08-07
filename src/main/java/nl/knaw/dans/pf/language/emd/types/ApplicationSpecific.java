@@ -32,6 +32,7 @@ public class ApplicationSpecific implements Serializable {
 
     private MetadataFormat metadataFormat = MetadataFormat.DEFAULT;
     private PakbonStatus pakbonStatus = PakbonStatus.NOT_IMPORTED;
+    private EmdArchive archive;
 
     public MetadataFormat getMetadataFormat() {
         return metadataFormat;
@@ -53,4 +54,11 @@ public class ApplicationSpecific implements Serializable {
         return MetadataFormat.valueOf(name.toUpperCase());
     }
 
+    public EmdArchive getArchive() {
+        return archive;
+    }
+
+    public void setArchive(EmdArchive archive) {
+        this.archive = archive;
+    }
 }
