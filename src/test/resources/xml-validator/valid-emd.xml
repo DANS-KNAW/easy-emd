@@ -329,5 +329,11 @@
     <emd:other>
         <eas:remark xml:lang="nl-NL" eas:scheme="REM0" eas:author="Author von Bar">remarks 0</eas:remark>
         <eas:remark xml:lang="nl-NL" eas:scheme="REM1" eas:author="Author von Bar">remarks 1</eas:remark>
+        <eas:application-specific>
+            <eas:metadataformat>ANY_DISCIPLINE</eas:metadataformat>
+            <eas:pakbon-status>IMPORTED</eas:pakbon-status>
+            <eas:archive eas:location="DATAVAULT"/>
+        </eas:application-specific>
+        <eas:etc>Can pass anything here</eas:etc>
     </emd:other>
 </emd:easymetadata>

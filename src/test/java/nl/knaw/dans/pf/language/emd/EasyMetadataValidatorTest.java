@@ -56,7 +56,7 @@ public class EasyMetadataValidatorTest {
         try {
             fis = new FileInputStream(VALID_XML);
             XMLErrorHandler result = EMDValidator.instance().validate(fis, EMDValidator.VERSION_0_1);
-            Assert.assertTrue(result.passed());
+            Assert.assertTrue(result.getMessages(), result.passed());
         }
         finally {
             if (fis != null) {

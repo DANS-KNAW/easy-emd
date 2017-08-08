@@ -4,7 +4,7 @@
  xmlns:eas="http://easy.dans.knaw.nl/easy/easymetadata/eas/"
  xmlns:emd="http://easy.dans.knaw.nl/easy/easymetadata/"
  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- xsi:schemaLocation="http://easy.dans.knaw.nl/easy/easymetadata/ http://easy.dans.knaw.nl/schemas/md/emd/2016/emd.xsd" emd:version="version0">
+ xsi:schemaLocation="http://easy.dans.knaw.nl/easy/easymetadata/ http://easy.dans.knaw.nl/schemas/md/emd/2017/emd.xsd" emd:version="version0">
     <emd:title>
         <dc:title eas:scheme="scheme0" xml:lang="en-US" eas:schemeId="schemeId0">title0</dc:title>
         <dc:title eas:scheme="scheme1" xml:lang="en-US" eas:schemeId="schemeId1">title1</dc:title>
