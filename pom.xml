@@ -44,6 +44,11 @@
 			<version>2.16</version>
 		</dependency>
         <dependency>
+            <groupId>nl.knaw.dans.easy</groupId>
+            <artifactId>easy-jibx-run</artifactId>
+            <version>1.2.4.5-DANS</version>
+        </dependency>
+        <dependency>
             <groupId>joda-time</groupId>
             <artifactId>joda-time</artifactId>
             <version>2.7</version>
