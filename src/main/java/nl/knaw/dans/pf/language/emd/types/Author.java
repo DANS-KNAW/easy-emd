@@ -76,6 +76,9 @@ public class Author implements MetadataItem {
 
         public EntityId() {}
 
+        public EntityId(String entityId){
+            this.entityId = entityId;
+        }
         public EntityId(String entityId, String scheme, URI identificationSystem) {
             this.entityId = entityId;
             this.scheme = scheme;
@@ -124,6 +127,7 @@ public class Author implements MetadataItem {
     private String prefix;
     private String surname;
     private String organization;
+    private EntityId organizationIdHolder;
     private EntityId entityIdHolder;
     private Role role;
 
@@ -254,6 +258,9 @@ public class Author implements MetadataItem {
      * 
      * @return the entity id object of this author, may be <code>null</code>
      */
+    public EntityId getOrganizationIdHolder() {
+        return this.organizationIdHolder;
+    }
     public EntityId getEntityIdHolder() {
         return this.entityIdHolder;
     }
@@ -268,6 +275,18 @@ public class Author implements MetadataItem {
         this.entityIdHolder = entityIdHolder;
         if (this.entityIdHolder.getScheme() == null)
             this.entityIdHolder.setScheme(DEFAULT_SCHEME);
+    }
+    /**
+     * Set the entity id object of this author organization.
+     *
+     * @param organizationIdHolder
+     *
+     *        the entity id object of this author organization
+     */
+    public void setOrganizationIdHolder(EntityId organizationIdHolder) {
+        this.organizationIdHolder = organizationIdHolder;
+        if (this.organizationIdHolder.getScheme() == null)
+            this.organizationIdHolder.setScheme(DEFAULT_SCHEME);
     }
 
     /**
@@ -343,6 +362,10 @@ public class Author implements MetadataItem {
     // keep this for backwards compatibility
     public void setEntityId(final String entityId) {
         this.entityIdHolder = new EntityId(entityId, DEFAULT_SCHEME, this.entityIdHolder == null ? null : this.entityIdHolder.getIdentificationSystem());
+    }
+
+    public void setOrganizationId(final String organizationId) {
+        this.organizationIdHolder = new EntityId(organizationId);
     }
 
     /**

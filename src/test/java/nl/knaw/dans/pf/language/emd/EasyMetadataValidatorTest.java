@@ -21,11 +21,15 @@ import java.io.InputStream;
 
 import javax.xml.validation.Schema;
 
+import nl.knaw.dans.pf.language.emd.binding.EmdMarshaller;
+import nl.knaw.dans.pf.language.emd.binding.EmdUnmarshaller;
 import nl.knaw.dans.pf.language.emd.types.ApplicationSpecific.MetadataFormat;
 import nl.knaw.dans.pf.language.emd.validation.EMDValidator;
 import nl.knaw.dans.pf.language.xml.exc.SchemaCreationException;
 import nl.knaw.dans.pf.language.xml.exc.ValidatorException;
+import nl.knaw.dans.pf.language.xml.exc.XMLDeserializationException;
 import nl.knaw.dans.pf.language.xml.exc.XMLException;
+import nl.knaw.dans.pf.language.xml.exc.XMLSerializationException;
 import nl.knaw.dans.pf.language.xml.validation.XMLErrorHandler;
 
 import org.junit.Assert;
@@ -63,6 +67,26 @@ public class EasyMetadataValidatorTest {
                 fis.close();
             }
         }
+    }
+
+    @Test
+    public void testAuthorWithOrganisationId() throws IOException, ValidatorException, SAXException, SchemaCreationException, XMLSerializationException, XMLDeserializationException {
+        InputStream fis = null;
+        try {
+            fis = new FileInputStream(VALID_XML);
+            EmdUnmarshaller<EasyMetadata> um = new EmdUnmarshaller<EasyMetadata>(EasyMetadataImpl.class);
+            EasyMetadata emd2;
+
+            // inputStream
+            emd2 = um.unmarshal(fis);
+
+        }
+        finally {
+            if (fis != null) {
+                fis.close();
+            }
+        }
+
     }
 
     @Test

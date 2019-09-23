@@ -31,6 +31,14 @@
 		<value ns="http://easy.dans.knaw.nl/easy/easymetadata/eas/" name="surname" field="surname" usage="optional" />
 		<value ns="http://easy.dans.knaw.nl/easy/easymetadata/eas/" name="organization" field="organization" usage="optional" />
 
+		<structure ns="http://easy.dans.knaw.nl/easy/easymetadata/eas/" name="organizationId" field="organizationIdHolder" usage="optional">
+			<value style="attribute" ns="http://easy.dans.knaw.nl/easy/easymetadata/eas/" name="identification-system"
+				   field="identificationSystem" usage="optional" />
+			<value style="attribute" ns="http://easy.dans.knaw.nl/easy/easymetadata/eas/" name="scheme"
+				   field="scheme" usage="optional" />
+			<value style="text" ns="http://easy.dans.knaw.nl/easy/easymetadata/eas/" field="entityId" usage="optional" />
+		</structure>
+
 		<structure ns="http://easy.dans.knaw.nl/easy/easymetadata/eas/" name="entityId" field="entityIdHolder" usage="optional">
 			<value style="attribute" ns="http://easy.dans.knaw.nl/easy/easymetadata/eas/" name="identification-system"
 				field="identificationSystem" usage="optional" />
