@@ -79,6 +79,7 @@ public class EasyMetadataValidatorTest {
 
             // inputStream
             emd2 = um.unmarshal(fis);
+            Assert.assertEquals("0000 0004 7237 0000", emd2.getEmdCreator().getEasCreator().get(1).getOrganizationIdHolder().getEntityId());
 
         }
         finally {
