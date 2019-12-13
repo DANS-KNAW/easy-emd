@@ -97,7 +97,9 @@ public class EmdCreator extends AbstractEmdContainer {
         List<String> dais = new ArrayList<String>();
         for (Author author : easCreator) {
             if (author.hasDigitalAuthorId()) {
-                dais.add(author.getEntityId());
+                String entityId = author.getEntityId();
+                if (entityId != null)
+                    dais.add(entityId);
             }
         }
         return dais;

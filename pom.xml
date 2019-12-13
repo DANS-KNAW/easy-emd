@@ -104,7 +104,7 @@
             <releases>
                 <enabled>true</enabled>
             </releases>
-            <url>https://maven.dans.knaw.nl/releases</url>
+            <url>https://maven.dans.knaw.nl/releases/</url>
         </pluginRepository>
         <pluginRepository>
             <releases>

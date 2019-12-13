@@ -20,6 +20,7 @@ import nl.knaw.dans.pf.language.emd.types.BasicDate;
 import nl.knaw.dans.pf.language.emd.types.BasicIdentifier;
 import nl.knaw.dans.pf.language.emd.types.BasicRemark;
 import nl.knaw.dans.pf.language.emd.types.BasicString;
+import nl.knaw.dans.pf.language.emd.types.EntityId;
 import nl.knaw.dans.pf.language.emd.types.IsoDate;
 import nl.knaw.dans.pf.language.emd.types.Polygon;
 import nl.knaw.dans.pf.language.emd.types.PolygonPart;
@@ -31,6 +32,7 @@ import org.slf4j.LoggerFactory;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -91,14 +93,19 @@ public class EmdHelper {
             for (int i = 0; i < times; i++) {
                 Author author = new Author();
                 if (i % 3 == 0) {
-                    author.setEntityIdHolder(new Author.EntityId("123" + i, null, new URI("http://author.org/sys" + i)));
+                    List<EntityId> entityIds = new ArrayList<EntityId>();
+                    entityIds.add(new EntityId("9876543216", "DAI", new URI("info:eu-repo/dai/nl/")));
+                    entityIds.add(new EntityId("1230", "ISNI", new URI("http://isni.org/")));
+                    entityIds.add(new EntityId("1230", "ORCID", new URI("https://orcid.org/")));
+                    author.setEntityIdHolder(entityIds);
                     author.setInitials("abc");
                     author.setPrefix("van");
                     author.setSurname(term.getName().termName + " " + i);
                     author.setTitle("Dr.");
                 } else if (i % 3 <= 1) {
-                    author.setIdentificationSystem(new URI("http://author.org/sys" + i));
-                    author.setEntityId("123" + i);
+                    List<EntityId> entityIds = new ArrayList<EntityId>();
+                    entityIds.add(new EntityId("123" + i, null, new URI("http://author.org/sys" + i)));
+                    author.setEntityIdHolder(entityIds);
                     author.setInitials("abc");
                     author.setPrefix("van");
                     author.setSurname(term.getName().termName + " " + i);

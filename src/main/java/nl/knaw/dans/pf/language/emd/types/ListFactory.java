@@ -35,6 +35,10 @@ public final class ListFactory {
         return new ArrayList<Author>();
     }
 
+    static synchronized List<EntityId> entityIdList() {
+        return new ArrayList<EntityId>();
+    }
+
     // Method used by JiBX serialization.
     static synchronized List<BasicDate> basicDateList() {
         return new ArrayList<BasicDate>();

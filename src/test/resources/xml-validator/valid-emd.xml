@@ -14,7 +14,9 @@
             <eas:initials>ABC</eas:initials>
             <eas:prefix>van</eas:prefix>
             <eas:surname>creator 0</eas:surname>
-            <eas:entityId eas:identification-system="http://author.org/sys0" eas:scheme="DAI">1230</eas:entityId>
+            <eas:entityId eas:identification-system="info:eu-repo/dai/nl/" eas:scheme="DAI">9876543216</eas:entityId>
+            <eas:entityId eas:identification-system="http://isni.org/" eas:scheme="ISNI">1230</eas:entityId>
+            <eas:entityId eas:identification-system="https://orcid.org/" eas:scheme="ORCID">1230</eas:entityId>
         </eas:creator>
         <eas:creator>
             <eas:title>Dr.</eas:title>
@@ -22,7 +24,7 @@
             <eas:prefix>van</eas:prefix>
             <eas:surname>creator 1</eas:surname>
             <eas:organization>Organisation</eas:organization>
-            <eas:organizationId eas:identification-system="http://isni.org" eas:scheme="ISNI">0000 0004 7237 0000</eas:organizationId>
+            <eas:organizationId eas:identification-system="http://isni.org/" eas:scheme="ISNI">0000 0004 7237 0000</eas:organizationId>
             <eas:entityId eas:identification-system="http://author.org/sys1" eas:scheme="DAI">1231</eas:entityId>
         </eas:creator>
     </emd:creator>

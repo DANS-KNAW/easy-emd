@@ -15,12 +15,21 @@
  */
 package nl.knaw.dans.pf.language.emd.types;
 
+import nl.knaw.dans.common.lang.id.DAI;
+import org.apache.commons.lang.StringUtils;
+
 import java.io.Serializable;
 import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.ArrayList;
+import java.util.List;
 
-import nl.knaw.dans.common.lang.id.DAI;
-
-import org.apache.commons.lang.StringUtils;
+import static nl.knaw.dans.pf.language.emd.types.EmdConstants.DAI_RESOLVER;
+import static nl.knaw.dans.pf.language.emd.types.EmdConstants.ISNI_RESOLVER;
+import static nl.knaw.dans.pf.language.emd.types.EmdConstants.ORCID_RESOLVER;
+import static nl.knaw.dans.pf.language.emd.types.EmdConstants.SCHEME_DAI;
+import static nl.knaw.dans.pf.language.emd.types.EmdConstants.SCHEME_ISNI;
+import static nl.knaw.dans.pf.language.emd.types.EmdConstants.SCHEME_ORCID;
 
 /**
  * Author of a resource.
@@ -68,54 +77,11 @@ public class Author implements MetadataItem {
         }
     }
 
-    public static class EntityId implements Serializable {
-
-        private String entityId;
-        private String scheme;
-        private URI identificationSystem;
-
-        public EntityId() {}
-
-        public EntityId(String entityId){
-            this.entityId = entityId;
-        }
-        public EntityId(String entityId, String scheme, URI identificationSystem) {
-            this.entityId = entityId;
-            this.scheme = scheme;
-            this.identificationSystem = identificationSystem;
-        }
-
-        public String getEntityId() {
-            return this.entityId;
-        }
-
-        public void setEntityId(String entityId) {
-            this.entityId = entityId;
-            if (this.scheme == null)
-                this.scheme = DEFAULT_SCHEME;
-        }
-
-        public String getScheme() {
-            return this.scheme;
-        }
-
-        public void setScheme(String scheme) {
-            this.scheme = scheme;
-        }
-
-        public URI getIdentificationSystem() {
-            return this.identificationSystem;
-        }
-
-        public void setIdentificationSystem(URI identificationSystem) {
-            this.identificationSystem = identificationSystem;
-        }
-    }
-
     /**
      * The default identification system. {@value}
      */
-    public static final String DEFAULT_SCHEME = EmdConstants.SCHEME_DAI;
+    public static final String DEFAULT_SCHEME = SCHEME_DAI;
+    public static final String DEFAULT_IDENTIFICATION_SYSTEM = DAI_RESOLVER;
 
     /**
      *
@@ -128,7 +94,7 @@ public class Author implements MetadataItem {
     private String surname;
     private String organization;
     private EntityId organizationIdHolder;
-    private EntityId entityIdHolder;
+    private List<EntityId> entityIdHolder = new ArrayList<EntityId>();
     private Role role;
 
     /**
@@ -261,7 +227,7 @@ public class Author implements MetadataItem {
     public EntityId getOrganizationIdHolder() {
         return this.organizationIdHolder;
     }
-    public EntityId getEntityIdHolder() {
+    public List<EntityId> getEntityIdHolder() {
         return this.entityIdHolder;
     }
 
@@ -271,11 +237,26 @@ public class Author implements MetadataItem {
      * @param entityIdHolder
      *        the entity id object of this author
      */
-    public void setEntityIdHolder(EntityId entityIdHolder) {
+    public void setEntityIdHolder(List<EntityId> entityIdHolder) {
         this.entityIdHolder = entityIdHolder;
-        if (this.entityIdHolder.getScheme() == null)
-            this.entityIdHolder.setScheme(DEFAULT_SCHEME);
+        for (EntityId entityId : this.entityIdHolder) {
+            if (entityId.getScheme() == null) {
+                entityId.setScheme(DEFAULT_SCHEME);
+                entityId.setIdentificationSystem(toURI(DEFAULT_IDENTIFICATION_SYSTEM));
+            }
+        }
     }
+
+    private URI toURI(String string) {
+        try {
+            return new URI(string);
+        }
+        catch (URISyntaxException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
     /**
      * Set the entity id object of this author organization.
      *
@@ -296,9 +277,15 @@ public class Author implements MetadataItem {
      */
     // backwards compatible
     public String getScheme() {
-        if (this.entityIdHolder == null)
-            return null;
-        return this.entityIdHolder.getScheme();
+        if (this.entityIdHolder != null && !this.entityIdHolder.isEmpty())
+            // return first DAI scheme
+            for (EntityId entityId : this.entityIdHolder) {
+                String scheme = entityId.getScheme();
+                if (scheme != null && scheme.equals(DEFAULT_SCHEME))
+                    return entityId.getScheme();
+            }
+
+        return null;
     }
 
     /**
@@ -310,9 +297,12 @@ public class Author implements MetadataItem {
     // keep this for backwards compatibility
     public void setScheme(final String scheme) {
         if (this.entityIdHolder == null)
-            this.entityIdHolder = new EntityId(null, scheme, null);
+            this.entityIdHolder = new ArrayList<EntityId>();
+
+        if (this.entityIdHolder.isEmpty())
+            this.entityIdHolder.add(new EntityId(null, scheme, null));
         else
-            this.entityIdHolder.setScheme(scheme);
+            this.entityIdHolder.get(0).setScheme(scheme);
     }
 
     /**
@@ -322,9 +312,15 @@ public class Author implements MetadataItem {
      */
     // keep this for backwards compatibility
     public URI getIdentificationSystem() {
-        if (this.entityIdHolder == null)
-            return null;
-        return this.entityIdHolder.getIdentificationSystem();
+        if (this.entityIdHolder != null && !this.entityIdHolder.isEmpty())
+            // return first DAI identificationSystem
+            for (EntityId entityId : this.entityIdHolder) {
+                String scheme = entityId.getScheme();
+                if (scheme != null && scheme.equals(DEFAULT_SCHEME))
+                    return entityId.getIdentificationSystem();
+            }
+
+        return null;
     }
 
     /**
@@ -336,9 +332,15 @@ public class Author implements MetadataItem {
     // keep this for backwards compatibility
     public void setIdentificationSystem(final URI identificationSystem) {
         if (this.entityIdHolder == null)
-            this.entityIdHolder = new EntityId(null, null, identificationSystem);
+            this.entityIdHolder = new ArrayList<EntityId>();
+
+        if (this.entityIdHolder.isEmpty())
+            this.entityIdHolder.add(new EntityId(null, null, identificationSystem));
         else
-            this.entityIdHolder.setIdentificationSystem(identificationSystem);
+            for (EntityId entityId : this.entityIdHolder) {
+                if (DEFAULT_SCHEME.equals(entityId.getScheme()))
+                    entityId.setIdentificationSystem(identificationSystem);
+            }
     }
 
     /**
@@ -348,9 +350,26 @@ public class Author implements MetadataItem {
      */
     // keep this for backwards compatibility
     public String getEntityId() {
-        if (this.entityIdHolder == null)
-            return null;
-        return this.entityIdHolder.getEntityId();
+        if (this.entityIdHolder != null && !this.entityIdHolder.isEmpty())
+            // return first DAI entityId
+            for (EntityId entityId : this.entityIdHolder) {
+                String scheme = entityId.getScheme();
+                if (scheme != null && scheme.equals(DEFAULT_SCHEME))
+                    return entityId.getEntityId();
+            }
+        
+        return null;
+    }
+
+    public List<EntityId> getEntityIds(String scheme) {
+        List<EntityId> entityIds = new ArrayList<EntityId>();
+        if (this.entityIdHolder != null && !this.entityIdHolder.isEmpty()) {
+            for (EntityId entityId : this.entityIdHolder) {
+                if (scheme.equals(entityId.getScheme()))
+                    entityIds.add(entityId);
+            }
+        }
+        return entityIds;
     }
 
     /**
@@ -361,7 +380,10 @@ public class Author implements MetadataItem {
      */
     // keep this for backwards compatibility
     public void setEntityId(final String entityId) {
-        this.entityIdHolder = new EntityId(entityId, DEFAULT_SCHEME, this.entityIdHolder == null ? null : this.entityIdHolder.getIdentificationSystem());
+        if (this.entityIdHolder == null)
+            this.entityIdHolder = new ArrayList<EntityId>();
+
+        this.entityIdHolder.add(new EntityId(entityId, DEFAULT_SCHEME, toURI(DEFAULT_IDENTIFICATION_SYSTEM)));
     }
 
     public void setOrganizationId(final String organizationId) {
@@ -377,13 +399,22 @@ public class Author implements MetadataItem {
      *        formal name of the identification system
      */
     // keep this for backwards compatibility
-    public void setEntityId(final String entityId, final String scheme) {
-        if (this.entityIdHolder == null) {
-            this.entityIdHolder = new EntityId(entityId, scheme, null);
-        } else {
-            this.entityIdHolder.setEntityId(entityId);
-            this.entityIdHolder.setScheme(scheme);
-        }
+    public EntityId setEntityIdWithScheme(final String entityId, final String scheme) {
+        if (this.entityIdHolder == null)
+            this.entityIdHolder = new ArrayList<EntityId>();
+
+        URI identificationSystem = null;
+        if (scheme == null || scheme.equals(DEFAULT_SCHEME))
+            identificationSystem = toURI(DEFAULT_IDENTIFICATION_SYSTEM);
+        else if (scheme.equals(SCHEME_ISNI))
+            identificationSystem = toURI(ISNI_RESOLVER);
+        else if (scheme.equals(SCHEME_ORCID))
+            identificationSystem = toURI(ORCID_RESOLVER);
+
+        EntityId entity = new EntityId(entityId, scheme, identificationSystem);
+        this.entityIdHolder.add(entity);
+
+        return entity;
     }
 
     public Role getRole() {
@@ -405,20 +436,71 @@ public class Author implements MetadataItem {
     }
 
     private boolean hasPersonalEntries() {
-        return (this.entityIdHolder != null && StringUtils.isNotBlank(this.entityIdHolder.getEntityId())) || StringUtils.isNotBlank(initials)
-                || StringUtils.isNotBlank(prefix) || StringUtils.isNotBlank(surname) || StringUtils.isNotBlank(title);
+        if (this.entityIdHolder != null && !this.entityIdHolder.isEmpty()) {
+            for (EntityId entityId: this.entityIdHolder) {
+                if (StringUtils.isNotBlank(entityId.getEntityId()))
+                    return true;
+            }
+        }
+
+        return StringUtils.isNotBlank(initials)
+            || StringUtils.isNotBlank(prefix)
+            || StringUtils.isNotBlank(surname)
+            || StringUtils.isNotBlank(title);
     }
 
     public boolean hasDigitalAuthorId() {
-        return this.entityIdHolder != null && EmdConstants.SCHEME_DAI.equals(this.entityIdHolder.getScheme()) && DAI.isValid(this.entityIdHolder.getEntityId());
+        if (this.entityIdHolder != null && !this.entityIdHolder.isEmpty()) {
+            for (EntityId entityId : this.entityIdHolder) {
+                if (SCHEME_DAI.equals(entityId.getScheme()) && DAI.isValid(entityId.getEntityId()))
+                    return true;
+            }
+        }
+        return false;
     }
 
     public DAI getDigitalAuthorId() {
-        if (!hasDigitalAuthorId()) {
-            return null;
-        } else {
-            return new DAI(this.entityIdHolder.getEntityId());
+        List<EntityId> dais = getEntityIds(SCHEME_DAI);
+        for (EntityId dai : dais) {
+            if (DAI.isValid(dai.getEntityId()))
+                return new DAI(dai.getEntityId());
         }
+        return null;
     }
 
+    public boolean hasOrcid() {
+        return !getEntityIds(SCHEME_ORCID).isEmpty();
+    }
+
+    public EntityId getOrcid() {
+        List<EntityId> ids = getEntityIds(SCHEME_ORCID);
+        if (!ids.isEmpty())
+            return ids.get(0);
+        return null;
+    }
+
+    public void setOrcid(final String entityId) {
+        if (this.entityIdHolder == null)
+            this.entityIdHolder = new ArrayList<EntityId>();
+
+        this.entityIdHolder.add(new EntityId(entityId, SCHEME_ORCID, toURI(ORCID_RESOLVER)));
+    }
+
+    public boolean hasIsni() {
+        return !getEntityIds(SCHEME_ISNI).isEmpty();
+    }
+
+    public EntityId getIsni() {
+        List<EntityId> ids = getEntityIds(SCHEME_ISNI);
+        if (!ids.isEmpty())
+            return ids.get(0);
+        return null;
+    }
+
+    public void setIsni(final String entityId) {
+        if (this.entityIdHolder == null)
+            this.entityIdHolder = new ArrayList<EntityId>();
+
+        this.entityIdHolder.add(new EntityId(entityId, SCHEME_ISNI, toURI(ISNI_RESOLVER)));
+    }
 }

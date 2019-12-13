@@ -17,11 +17,13 @@ package nl.knaw.dans.pf.language.emd;
 
 import nl.knaw.dans.pf.language.emd.types.Author;
 import nl.knaw.dans.pf.language.emd.types.BasicString;
+import nl.knaw.dans.pf.language.emd.types.EntityId;
 import org.junit.Assert;
 import org.junit.Test;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -54,7 +56,9 @@ public class EmdCreatorTest {
     public void testToStringAuthorWithRole() throws URISyntaxException {
         Author author = new Author("Dr.", "A.B.C.", "van", "D.");
         author.setOrganization("myOrg");
-        author.setEntityIdHolder(new Author.EntityId("12345", "scheme123", new URI("http://x")));
+        List<EntityId> entityIds = new ArrayList<EntityId>();
+        entityIds.add(new EntityId("12345", "scheme123", new URI("http://x")));
+        author.setEntityIdHolder(entityIds);
         author.setRole(new Author.Role("RightsHolder", "DATACITE"));
 
         Assert.assertEquals("D., Dr. A.B.C. van (myOrg), RightsHolder", author.toString());

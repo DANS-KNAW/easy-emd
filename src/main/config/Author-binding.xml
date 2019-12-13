@@ -39,18 +39,24 @@
 			<value style="text" ns="http://easy.dans.knaw.nl/easy/easymetadata/eas/" field="entityId" usage="optional" />
 		</structure>
 
-		<structure ns="http://easy.dans.knaw.nl/easy/easymetadata/eas/" name="entityId" field="entityIdHolder" usage="optional">
-			<value style="attribute" ns="http://easy.dans.knaw.nl/easy/easymetadata/eas/" name="identification-system"
-				field="identificationSystem" usage="optional" />
-			<value style="attribute" ns="http://easy.dans.knaw.nl/easy/easymetadata/eas/" name="scheme"
-				field="scheme" usage="optional" />
-			<value style="text" ns="http://easy.dans.knaw.nl/easy/easymetadata/eas/" field="entityId" usage="optional" />
-		</structure>
+		<collection field="entityIdHolder" factory="nl.knaw.dans.pf.language.emd.types.ListFactory.entityIdList">
+			<structure ns="http://easy.dans.knaw.nl/easy/easymetadata/eas/" name="entityId"
+					   type="nl.knaw.dans.pf.language.emd.types.EntityId" usage="optional"/>
+		</collection>
 
         <structure ns="http://easy.dans.knaw.nl/easy/easymetadata/eas/" name="role" field="role" usage="optional">
             <value style="attribute" ns="http://easy.dans.knaw.nl/easy/easymetadata/eas/" name="scheme" field="scheme" usage="optional" />
             <value style="text" ns="http://easy.dans.knaw.nl/easy/easymetadata/eas/" field="role" usage="optional" />
         </structure>
+	</mapping>
+
+	<mapping class="nl.knaw.dans.pf.language.emd.types.EntityId" ns="http://easy.dans.knaw.nl/easy/easymetadata/eas/" abstract="true">
+		<namespace uri="http://easy.dans.knaw.nl/easy/easymetadata/eas/" prefix="eas" />
+		<value style="attribute" ns="http://easy.dans.knaw.nl/easy/easymetadata/eas/" name="identification-system"
+			   field="identificationSystem" usage="optional" />
+		<value style="attribute" ns="http://easy.dans.knaw.nl/easy/easymetadata/eas/" name="scheme"
+			   field="scheme" usage="optional" />
+		<value style="text" ns="http://easy.dans.knaw.nl/easy/easymetadata/eas/" field="entityId" usage="optional" />
 	</mapping>
 
 </binding>

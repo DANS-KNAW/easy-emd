@@ -15,6 +15,8 @@
  */
 package nl.knaw.dans.pf.language.emd.types;
 
+import nl.knaw.dans.common.lang.id.DAI;
+
 /**
  * Constants used in easymetadata types.
  * 
@@ -77,6 +79,19 @@ public final class EmdConstants {
      * value of the scheme attribute of elements representing an author that can be identified through the 'Digital Author Identification' (DAI).
      */
     public static final String SCHEME_DAI = "DAI";
+    public static final String DAI_RESOLVER = DAI.DAI_NAMESPACE;
+
+    /**
+     * value of the scheme attribute of elements representing an author that can be identified through the 'International Standard Name Identifier' (ISNI).
+     */
+    public static final String SCHEME_ISNI = "ISNI";
+    public static final String ISNI_RESOLVER = "http://isni.org/isni/";
+
+    /**
+     * value of the scheme attribute of elements representing an author that can be identified through the 'Open Researcher and Contributor ID' (ORCID).
+     */
+    public static final String SCHEME_ORCID = "ORCID";
+    public static final String ORCID_RESOLVER = "https://orcid.org/";
 
     /**
      * value of the scheme attribute of elements representing a dataset that can be identified through the 'Digital Object Identification' (DOI). Note that this
