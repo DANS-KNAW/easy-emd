@@ -70,10 +70,10 @@ public class Author implements MetadataItem {
         }
 
         public void setScheme(String scheme) {
-            if ("DATACITE".equals(scheme))
+            if ("DATACITE".equals(scheme) || "EASY".equals(scheme))
                 this.scheme = scheme;
             else
-                throw new IllegalArgumentException("The Author's role scheme can only be \"DATACITE\"");
+                throw new IllegalArgumentException("The Author's role scheme can only be \"DATACITE\" or \"EASY\"");
         }
     }
 
