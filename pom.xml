@@ -103,22 +103,11 @@
     </repositories>
     <pluginRepositories>
         <pluginRepository>
-            <id>DANS</id>
+            <id>dans-releases</id>
             <releases>
                 <enabled>true</enabled>
             </releases>
             <url>https://maven.dans.knaw.nl/releases/</url>
-        </pluginRepository>
-        <pluginRepository>
-            <releases>
-                <updatePolicy>never</updatePolicy>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-            <id>jibx.sf.net</id>
-            <name>JiBX repository</name>
-            <url>http://jibx.sf.net/maven2</url>
         </pluginRepository>
     </pluginRepositories>
 	<build>
